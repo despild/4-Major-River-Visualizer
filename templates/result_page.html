@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}
+{{head_title}}
+
+{% endblock %}
+{% block head %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+
+ <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <style type=text/css><!--
+      #ResultCanvas { boorder: 1px solid #000; }
+    --></style>
+{% endblock%}
+{% block external %}
+{% endblock %}
+{% block content %}
+
+ <div id="fb-root"></div>
+ <script src="//connect.facebook.net/en_US/all.js"></script>
+ <script>
+   FB.init({
+     appId  : '175064399228506',
+     status : true, // check login status
+     cookie : true, // enable cookies to allow the server to access the session
+     xfbml  : true, // parse XFBML
+     oauth : true // enables OAuth 2.0
+   });
+ </script>
+<script type='text/javascript'>
+
+function dial(){
+	FB.ui(
+		{
+			method: 'feed',
+			name: document.title,
+			link: document.URL,
+			picture: '',
+			caption: '{{fb_view}}',
+			description: ''
+		},
+		function(response) {
+			if (response && response.post_id) {
+			  alert('Post was published.');
+			} else {
+			  alert('Post was not published.');
+			}
+		}
+	);
+}
+</script>
+
+
+
+
+
+<div id="canvasField">Press F5 or Your Browser Cannot Support HTML5Canvas</div>
+
+{{im}}
+
+{% include 'result_img.js' %}
+<br>
+<div>&nbsp; It started at {{resultstart}} 
+
+{% if ended %}
+	&nbsp; : &nbsp; <a href="/reset_result/{{result_id}}">RESET</a>
+{% endif %}
+	
+
+</div>
+<div>&nbsp;&nbsp;{{result_view}}<div>
+
+<div valign = bottom>&nbsp;&nbsp;Post on Facebook : <fb:login-button autologoutlink="true"></fb:login-button>
+
+<input type="image" src = "/files/src/FB_button_small.gif" onclick="dial()"></input>
+
+<br>
+<fb:comments width="600" title="댓글 달기" canpost="true" candelete="false" publish_feed="false"></fb:comments> 
+</div>
+{% endblock %}

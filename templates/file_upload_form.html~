@@ -1,0 +1,9 @@
+<h1>Select an Image to View</h1>
+<form enctype="multipart/form-data" 
+    method="post"
+    action="/./">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="file" value="uploaded"/>
+    <input type="submit" value="View"/>
+</form>

@@ -1,0 +1,5 @@
+<div style="width:400">
+{% for icon in icons %}
+    <a href="input_page/{{icon.id}}"><img src="/files/icon/{{icon.filename.split('.')[0]}}.gif"></a>
+{% endfor %}
+</div>

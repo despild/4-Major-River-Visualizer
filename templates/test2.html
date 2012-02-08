@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title></title>
+    <style type=text/css><!--
+      #container { position: relative; }
+      #e { border: 1px solid #000; }
+    --></style>
+  </head>
+<body> 
+<audio id ="sa" autoplay=autoplay src="http://pds21.egloos.com/pds/201108/04/35/sa.ogg" autobuffer = "true" style="display:none;">
+
+		</audio>
+		<audio id ="dae" controls style="display:none">
+			<source src="/files/sound/dae.mp3" type="audio/mp3">
+		</audio>
+		<audio id ="gang" controls style="display:none">
+			<source src="/files/sound/gang.mp3" type="audio/mp3">
+		</audio>
+		<audio id ="testSd" controls style="display:none">
+			<source src="/files/sound/test.mp3" type="audio/mp3">
+		</audio>
+		<img id=test src="test/test.png" >
+      <canvas id=e width=820 height=430>
+
+	<script type=text/javascript>
+//window.onload = function(){
+		var can = document.getElementById("e");
+		var context = can.getContext("2d");
+	//	var image = new Image();
+		var sa = document.getElementById("sa");
+		var dae = document.getElementById("dae");
+		var gang = document.getElementById("gang");
+		var soundCount=3
+		var tester=0;
+		var sounds = new Array();
+		var testSound = document.getElementById("testSd");
+	var ua = window.navigator.userAgent.toLowerCase();
+		context.font ='50px "Arial"';
+		context.fillStyle='rgb(0,0,0)';
+		sounds[0] = sa;
+		sounds[1] = dae;
+		sounds[2] = gang;
+/*
+		sounds[0].play();
+		sounds[1].play();
+		sounds[2].play();
+*/
+		context.fillRect(0,0,100,100);
+		setInterval(drawPlay,1);
+//		context.drawImage(image,0,0,100,100);
+		function drawPlay(){
+
+			context.fillStyle='rgb(255,255,255)';
+			context.fillRect(0,0,820,430);
+			
+			context.fillStyle='rgb(0,0,0)';
+			context.font ='20px "Arial"';
+			context.fillText(ua,10,400);
+			context.fillText(testSound.ended,300,100);
+			testSound.play();
+			context.fillText(testSound.ended,300,200);
+			if (testSound.ended){
+				testSound.ended = false;
+			}
+			context.fillStyle='rgb(0,0,0)';
+			context.font ='50px "Arial"';
+			context.fillStyle='rgb(0,0,0)';
+			context.fillText(tester,100,100);
+			context.fillText(soundCount%3,200,100);
+			tester++;
+
+			if(sounds[(soundCount-1)%3].ended){
+				sounds[soundCount%3].play();
+				soundCount++;
+				drawLoop();
+			}
+
+
+		}
+
+		function drawLoop(){
+
+		
+			context.fillStyle='rgb(0,0,0)';
+			context.fillRect(100,150,100,100);
+			context.font ='50px "Arial"';
+			context.fillText(sa.ended,100,300);
+			context.fillText(dae.ended,100,350);
+			context.fillText(gang.ended,100,400);
+		}
+
+//};
+	</script>
+
+
+  </body>
+</html>

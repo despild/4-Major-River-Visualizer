@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{head_title}}{% endblock %}
+{% block external %}
+{% endblock %}
+{% block content %}
+{{ MEDIA_ROOT_TEST}}
+{% if user.is_authenticated %}
+Select Icon : <br>
+{%endif%}
+<div >
+{% include 'icon_page.html' %}
+</div>
+<br>
+{% if user.is_authenticated %}
+Or Upload Your Icon :
+<br>
+<a href="/upload_file/{{user.id}}"> Click! </a>
+<br>
+{%endif%}
+{%if resultsets%}
+<div ><hr></div>
+	<h1>Recent Results</h1>
+	{{r}}
+{%endif%}
+	
+{% endblock %}

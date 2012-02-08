@@ -1,0 +1,6 @@
+<form enctype="multipart/form-data" method="post" action="/input_page/{{icon_id}}/{{user_id}}/">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Save" id="Save"/>
+</form>
+

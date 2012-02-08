@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+{{head_title}}
+{% endblock %}
+{% block head %}
+ <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+
+    <style type=text/css><!--
+      #ResultCanvas { border: 1px solid #000; }
+    --></style>
+{% endblock%}
+{% block external %}
+{% endblock %}
+{% block content %}
+
+{{im}}
+<canvas id="ResultCanvas" width =930 height =430>
+</canvas>
+{% include 'result_img.js' %}
+<br>
+<div>&nbsp;&nbsp;{{result_view}}</div>
+{% endblock %}

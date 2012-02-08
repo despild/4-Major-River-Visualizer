@@ -1,0 +1,7 @@
+<h1>Select an Image to View</h1>
+<form enctype="multipart/form-data" 
+      method="post"
+      action="/example/image_viewer/">
+    {{form.as_p}}
+    <input type="submit" value="View">
+</form>

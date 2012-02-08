@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+{{head_title}}
+{% endblock %}
+{% block head %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+ <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <style type=text/css><!--
+      #ResultCanvas { border: 1px solid #000; }
+    --></style>
+{% endblock%}
+{% block external %}
+{% endblock %}
+{% block content %}
+<div id="canvasField"></div>
+{{im}}
+{% include 'result_img_mobile.js' %}
+<br>
+<div>&nbsp;&nbsp;{{result_view}}</div>
+{% endblock %}
